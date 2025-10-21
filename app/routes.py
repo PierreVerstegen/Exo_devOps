@@ -15,3 +15,23 @@ def init_routes(app : Flask) -> None:
 		view_func=lambda id : book_controller.get_book(id),
 		methods=["GET"],
 	)
+	
+	app.add_url_rule(
+		"/api/books",
+		endpoint="add_book",
+		view_func=book_controller.add_book,
+		methods=["POST"]
+	)
+
+	app.add_url_rule(
+		"/api/books/<int:id>",
+		endpoint="update_book",
+		view_func=book_controller.update_book,
+		methods=["PUT"],
+	)
+	app.add_url_rule(
+		"/api/books/<int:id>",
+		endpoint="delete_book",
+		view_func=book_controller.delete_book,
+		methods=["DELETE"]
+	)
